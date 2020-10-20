@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lobster', cursive;
+  background-color: #f2f1ed;
+  font-size: 4em;
+
+  color: #ff0000;
+  text-align: center;
+  background-image: url('./images/new-year.jpg');
+  padding: 30px;
+}
+.title {
+  font-size: 1em;
+}
+.timer {
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-style: bold;
+}
+
+.field {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 250px;
+  font-style: bold;
+}
