@@ -11,16 +11,16 @@ class CountdownTimer {
   }
 
   init() {
-    this.refreshTimer();
+    this.getDeltaTime();
     setInterval(() => {
-      this.refreshTimer();
+      this.getDeltaTime();
     }, 1000);
   }
 
   getDeltaTime() {
     const currentTime = Date.now();
     const deltaTime = this.targetDate - currentTime;
-    return deltaTime;
+    this.getTimeComponents(deltaTime);
   }
 
   getTimeComponents(time) {
@@ -31,22 +31,18 @@ class CountdownTimer {
     const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
     const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
 
-    return { days, hours, mins, secs };
+    this.updateClockface(days, hours, mins, secs);
   }
 
   pad(value) {
     return String(value).padStart(2, '0');
   }
 
-  updateClockface({ days, hours, mins, secs }) {
+  updateClockface(days, hours, mins, secs) {
     daysEl.textContent = `${days}`;
     hoursEl.textContent = `${hours}`;
     minsEl.textContent = `${mins}`;
     secsEl.textContent = `${secs}`;
-  }
-
-  refreshTimer() {
-    this.updateClockface(this.getTimeComponents(this.getDeltaTime()));
   }
 }
 
